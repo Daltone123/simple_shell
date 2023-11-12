@@ -160,7 +160,7 @@ int for_atoi(char *);
 
 int for_erratoi(char *);
 void for_printing_error(info_t *, char *);
-int for_printing_d(int, int);
+int for_printing_dd(int, int);
 char *for_converting_number(long int, int, int);
 void for_removing_comments(char *);
 

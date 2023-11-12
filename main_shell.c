@@ -15,10 +15,10 @@ int hsh(info_t *infom, char **avv)
 	while (r != -1 && builtin_rett != -2)
 	{
 		for_clearing_info(infom);
-		if (to_interact(infom))
+		if (for_interact(infom))
 			for_puts("$ ");
 		for_eputchar(BUF_FLUSH);
-		r = get_input(infom);
+		r = for_get_input(infom);
 		if (r != -1)
 		{
 			for_setting_info(infom, avv);
@@ -26,13 +26,13 @@ int hsh(info_t *infom, char **avv)
 			if (builtin_rett == -1)
 				for_finding_cmd(infom);
 		}
-		else if (to_interact(infom))
+		else if (for_interact(infom))
 			for_putchar('\n');
 		for_free_info(infom, 0);
 	}
 	for_write_history(infom);
 	for_free_info(infom, 1);
-	if (!to_interact(infom) && infom->status)
+	if (!for_interact(infom) && infom->status)
 		exit(infom->status);
 	if (builtin_rett == -2)
 	{
@@ -108,7 +108,7 @@ void for_finding_cmd(info_t *infom)
 	}
 	else
 	{
-		if ((to_interact(infom) || for_getenvv(infom, "PATH=")
+		if ((for_interact(infom) || for_getenvv(infom, "PATH=")
 					|| infom->argv[0][0] == '/') && is_cmd(infom, infom->argv[0]))
 			for_fork_cmd(infom);
 		else if (*(infom->arg) != '\n')

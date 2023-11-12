@@ -39,7 +39,7 @@ void for_printing_error(info_t *infom, char *estr)
 {
 	for_eputs(infom->f_names);
 	for_eputs(": ");
-	for_print_dd(infom->forlinecount, STDERR_FILENO);
+	for_printing_dd(infom->forlinecount, STDERR_FILENO);
 	for_eputs(": ");
 	for_eputs(infom->argv[0]);
 	for_eputs(": ");
@@ -55,12 +55,12 @@ void for_printing_error(info_t *infom, char *estr)
  */
 int for_printing_dd(int inputt, int fdd)
 {
-	int (*__putchar)(char) = to_putchar;
+	int (*__putchar)(char) = for_putchar;
 	int i, count = 0;
-	unsigned int _abs_, current;
+	unsigned int _abs_, curr;
 
 	if (fdd == STDERR_FILENO)
-		__putchar = to_eputchar;
+		__putchar = for_eputchar;
 	if (inputt < 0)
 	{
 		_abs_ = -inputt;
@@ -101,7 +101,7 @@ char *for_converting_number(long int number, int bases, int flags)
 	char *ptr;
 	unsigned long n = number;
 
-	if (!(flags & CONVERT_UNSIGNED) && num < 0)
+	if (!(flags & CONVERT_UNSIGNED) && number < 0)
 	{
 		n = -number;
 		sign = '-';

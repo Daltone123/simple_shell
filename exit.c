@@ -15,7 +15,7 @@ char *for_strncpy(char *destination, char *source, int n)
 	i = 0;
 	while (source[i] != '\0' && i < n - 1)
 	{
-		dest[i] = src[i];
+		destination[i] = source[i];
 		i++;
 	}
 	if (i < n)
@@ -23,7 +23,7 @@ char *for_strncpy(char *destination, char *source, int n)
 		j = i;
 		while (j < n)
 		{
-			dest[j] = '\0';
+			destination[j] = '\0';
 			j++;
 		}
 	}
@@ -48,7 +48,7 @@ char *for_strncat(char *destination, char *source, int n)
 		i++;
 	while (source[j] != '\0' && j < n)
 	{
-		destination[i] = src[j];
+		destination[i] = source[j];
 		i++;
 		j++;
 	}

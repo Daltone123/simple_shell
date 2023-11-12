@@ -13,7 +13,7 @@ int for_myexit(info_t *infom)
 
 	if (infom->argv[1])
 	{
-		exit_check = is_erratoi(infom->argv[1]);
+		exit_check = for_erratoi(infom->argv[1]);
 		if (exit_check == -1)
 		{
 			infom->status = 2;
@@ -22,7 +22,7 @@ int for_myexit(info_t *infom)
 			for_eputchar('\n');
 			return (1);
 		}
-		infom->err_number = is_erratoi(infom->argv[1]);
+		infom->err_number = for_erratoi(infom->argv[1]);
 		return (-2);
 	}
 	infom->err_number = -1;
@@ -43,7 +43,7 @@ int for_mycd(info_t *infom)
 	s = getcwd(buffer, 1024);
 	if (!s)
 		for_puts("TODO: >>getcwd failure emsg here<<\n");
-	if (!info->argv[1])
+	if (!infom->argv[1])
 	{
 		direction = for_getenvv(infom, "HOME=");
 		if (!direction)
@@ -62,7 +62,7 @@ int for_mycd(info_t *infom)
 		}
 		for_puts(for_getenvv(infom, "OLDPWD=")), for_putchar('\n');
 		chdir_rett =
-			chdir((dir = for_getenvv(infom, "OLDPWD=")) ? direction : "/");
+			chdir((direction = for_getenvv(infom, "OLDPWD=")) ? direction : "/");
 	}
 	else
 		chdir_rett = chdir(infom->argv[1]);

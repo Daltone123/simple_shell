@@ -28,7 +28,7 @@ int for_unsetenvv(info_t *infom, char *varr)
 {
 	list_t *nodes = infom->envv;
 	size_t i = 0;
-	char *p;
+	char *pp;
 
 	if (!nodes || !varr)
 		return (0);
@@ -43,7 +43,7 @@ int for_unsetenvv(info_t *infom, char *varr)
 			nodes = infom->envv;
 			continue;
 		}
-		node = nodes->next;
+		nodes = nodes->next;
 		i++;
 	}
 	return (infom->envv_change);

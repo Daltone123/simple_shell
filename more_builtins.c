@@ -46,12 +46,12 @@ int for_unset_alias(info_t *infom, char *str)
  */
 int for_set_alias(info_t *infom, char *str)
 {
-	char *p;
+	char *pp;
 
 	pp = for_strchr(str, '=');
 	if (!pp)
 		return (1);
-	if (!*++p)
+	if (!*++pp)
 		return (for_unset_alias(infom, str));
 
 	for_unset_alias(infom, str);
@@ -64,7 +64,7 @@ int for_set_alias(info_t *infom, char *str)
  *
  * Return: Always 0 on success, 1 on error
  */
-int for_print_alias(list_t *nodes)
+int for_printing_alias(list_t *nodes)
 {
 	char *pp = NULL, *a = NULL;
 
@@ -74,7 +74,7 @@ int for_print_alias(list_t *nodes)
 		for (a = nodes->str; a <= pp; a++)
 		for_putchar(*a);
 		for_putchar('\'');
-		for_puts(p + 1);
+		for_puts(pp + 1);
 		for_puts("'\n");
 		return (0);
 	}
@@ -107,7 +107,7 @@ int for_myalias(info_t *infom)
 	{
 		pp = for_strchr(infom->argv[i], '=');
 		if (pp)
-			for_set_alias(info, info->argv[i]);
+			for_set_alias(infom, infom->argv[i]);
 		else
 			for_printing_alias(for_node_starts_with(infom->alias, infom->argv[i], '='));
 	}

@@ -56,7 +56,7 @@ ssize_t for_get_input(info_t *infom)
 	char **buffer_p = &(infom->arg), *pp;
 
 	for_putchar(BUF_FLUSH);
-	r = to_input_buf(infom, &buffer, &length);
+	r = to_input_buffer(infom, &buffer, &length);
 	if (r == -1)
 		return (-1);
 	if (length)
@@ -79,7 +79,7 @@ ssize_t for_get_input(info_t *infom)
 			infom->cmdbuftype = CMD_NORM;
 		}
 
-		*bufer_p = pp;
+		*buffer_p = pp;
 		return (for_strlength(pp));
 	}
 

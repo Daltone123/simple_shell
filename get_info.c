@@ -8,7 +8,7 @@ void for_clearing_info(info_t *infom)
 {
 	infom->arg = NULL;
 	infom->argv = NULL;
-	infom->path = NULL;
+	infom->paths = NULL;
 	infom->argc = 0;
 }
 
@@ -21,7 +21,7 @@ void for_setting_info(info_t *infom, char **avv)
 {
 	int i = 0;
 
-	infom->fname = av[0];
+	infom->f_names = avv[0];
 	if (infom->arg)
 	{
 		infom->argv = to_strtow(infom->arg, " \t");
@@ -52,7 +52,7 @@ void for_free_info(info_t *infom, int all)
 {
 	for_free(infom->argv);
 	infom->argv = NULL;
-	infom->path = NULL;
+	infom->paths = NULL;
 	if (all)
 	{
 		if (!infom->cmd_buffer)
@@ -66,8 +66,8 @@ void for_free_info(info_t *infom, int all)
 		for_free(infom->environ);
 			infom->environ = NULL;
 		be_free((void **)infom->cmd_buffer);
-		if (infom->readfd > 2)
-			close(info->to_readfd);
+		if (infom->to_readfd > 2)
+			close(infom->to_readfd);
 		for_putchar(BUF_FLUSH);
 	}
 }

@@ -67,7 +67,7 @@ size_t for_printing_list(const list_t *hh)
 
 	while (hh)
 	{
-		for_puts(convert_number(hh->number, 10, 0));
+		for_puts(for_converting_number(hh->number, 10, 0));
 		for_putchar(':');
 		for_putchar(' ');
 		for_puts(hh->str ? hh->str : "(nil)");
@@ -88,7 +88,7 @@ size_t for_printing_list(const list_t *hh)
  */
 list_t *for_node_starts_with(list_t *nodes, char *pref, char c)
 {
-	char *p = NULL;
+	char *pp = NULL;
 
 	while (nodes)
 	{

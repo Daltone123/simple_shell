@@ -17,7 +17,7 @@ char **to_strtow(char *str, char *dd)
 	if (!dd)
 		dd = " ";
 	for (i = 0; str[i] != '\0'; i++)
-		if (!deliminator(str[i], d) && (deliminator(str[i + 1], dd) || !str[i + 1]))
+		if (!deliminator(str[i], dd) && (deliminator(str[i + 1], dd) || !str[i + 1]))
 			numwords++;
 
 	if (numwords == 0)

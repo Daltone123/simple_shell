@@ -86,8 +86,8 @@ int for_populate_envv_list(info_t *infom)
 	size_t i;
 
 	for (i = 0; environ[i]; i++)
-		for_add_node_end(&nods, environ[i], 0);
-	infom->envv = nods;
+		for_add_node_end(&nodes, environ[i], 0);
+	infom->envv = nodes;
 	return (0);
 }
 

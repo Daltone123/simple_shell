@@ -54,7 +54,7 @@ void to_check_chain(info_t *infom,
 	{
 		if (infom->status)
 		{
-			buf[i] = 0;
+			buffer[i] = 0;
 			j = length;
 		}
 	}
@@ -62,7 +62,7 @@ void to_check_chain(info_t *infom,
 	{
 		if (!infom->status)
 		{
-			buf[i] = 0;
+			buffer[i] = 0;
 			j = length;
 		}
 	}
@@ -117,13 +117,13 @@ int for_replacing_vars(info_t *infom)
 
 		if (!for_strcmp(infom->argv[i], "$?"))
 		{
-			for_replace_string(&(infom->argv[i]),
+			for_replacing_string(&(infom->argv[i]),
 					for_strdup(for_converting_number(infom->status, 10, 0)));
 			continue;
 		}
 		if (!for_strcmp(infom->argv[i], "$$"))
 		{
-			for_replace_string(&(infom->argv[i]),
+			for_replacing_string(&(infom->argv[i]),
 					for_strdup(for_converting_number(getpid(), 10, 0)));
 			continue;
 		}

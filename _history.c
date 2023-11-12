@@ -15,7 +15,7 @@ char *for_history_file(info_t *infom)
 	if (!direction)
 		return (NULL);
 	buffer = malloc(sizeof(char) *
-			(for_strlength(dir) + for_strlenght(HIST_FILE) + 2));
+			(for_strlength(direction) + for_strlength(HIST_FILE) + 2));
 	if (!buffer)
 		return (NULL);
 	buffer[0] = 0;
@@ -89,7 +89,7 @@ int for_read_history(info_t *infom)
 	for (i = 0; i < fsize; i++)
 		if (buffer[i] == '\n')
 		{
-			buf[i] = 0;
+			buffer[i] = 0;
 			to_build_history_list(infom, buffer + last, forlinecount++);
 			last = i + 1;
 		}
@@ -116,7 +116,7 @@ int to_build_history_list(info_t *infom, char *buffer, int forlinecount)
 	list_t *nodes = NULL;
 
 	if (infom->my_history)
-		nodes = info->history;
+		nodes = infom->my_history;
 	for_add_node_end(&nodes, buffer, forlinecount);
 
 	if (!infom->my_history)

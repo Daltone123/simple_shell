@@ -52,7 +52,7 @@ list_t *for_add_node_end(list_t **head, const char *str, int number)
 	new_node = malloc(sizeof(list_t));
 	if (!new_node)
 		return (NULL);
-	_memset((void *)new_node, 0, sizeof(list_t));
+	for_memset((void *)new_node, 0, sizeof(list_t));
 	new_node->number = number;
 	if (str)
 	{
@@ -66,7 +66,7 @@ list_t *for_add_node_end(list_t **head, const char *str, int number)
 	if (nodes)
 	{
 		while (nodes->next)
-			nodes = node->next;
+			nodes = nodes->next;
 		nodes->next = new_node;
 	}
 	else
@@ -147,7 +147,7 @@ void to_free_list(list_t **head_ptr)
 	if (!head_ptr || !*head_ptr)
 		return;
 	head = *head_ptr;
-	node = head;
+	nodes = head;
 	while (nodes)
 	{
 		next_node = nodes->next;

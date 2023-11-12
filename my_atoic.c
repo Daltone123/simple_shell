@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * to_interact - returns true if shell is interactive mode
+ * for_interact - returns true if shell is interactive mode
  * @infom: struct address
  *
  * Return: 1 if the interactive mode, 0 otherwise
  */
-int to_interact(info_t *infom)
+int for_interact(info_t *infom)
 {
 	return (isatty(STDIN_FILENO) && infom->to_readfd <= 2);
 }
