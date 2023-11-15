@@ -32,7 +32,8 @@ int for_unset_alias(info_t *infom, char *str)
 	c = *pp;
 	*pp = 0;
 	rett = for_delete_node_at_index(&(infom->alias),
-		for_get_node_index(infom->alias, for_node_starts_with(infom->alias, str, -1)));
+		for_get_node_index(infom->alias,
+			for_node_starts_with(infom->alias, str, -1)));
 	*pp = c;
 	return (rett);
 }
